@@ -28,30 +28,31 @@ public class Formula9Servlet extends HttpServlet {
         String cParam = request.getParameter("c");
         String dParam = request.getParameter("d");
 
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        try {
-            double a = Double.parseDouble(aParam);
-            double b = Double.parseDouble(bParam);
-            double c = Double.parseDouble(cParam);
-            double d = Double.parseDouble(dParam);
-
-            double result = calculate(a, b, c, d);
-            if (result != result) {    //result = NaN
-                throw new IllegalArgumentException();
-            }
-
+        try(PrintWriter out = response.getWriter()) {
             out.println("<html><body>");
-            out.println("<img src=\"formula9.png\" alt=\"9th formula image\" border=\"2\" height=\"150\"/>");
-            out.println("<h2>Answer for a = " + a + ", b = " + b + ", c = " + c + ", d = " + d + " :</h2>");
-            out.println("<h3>" + result + "</h3></br>");
-        } catch (NumberFormatException e) {
-            out.println("<h1>Error! Please, enter only numbers</h1>");
-        } catch (IllegalArgumentException e) {
-            out.println("<h1>Error! Follow the domain of the function</h1>");
-        } finally {
-            out.println("<a href=\"formula9page.jsp\"><h2>Back</h2></a>");
-            out.println("</body></html>");
+            try {
+                double a = Double.parseDouble(aParam);
+                double b = Double.parseDouble(bParam);
+                double c = Double.parseDouble(cParam);
+                double d = Double.parseDouble(dParam);
+
+                double result = calculate(a, b, c, d);
+                if (result != result) {    //result = NaN
+                    throw new IllegalArgumentException();
+                }
+
+                out.println("<html><body>");
+                out.println("<img src=\"formula9.png\" alt=\"9th formula image\" border=\"2\" height=\"150\"/>");
+                out.println("<h2>Answer for a = " + a + ", b = " + b + ", c = " + c + ", d = " + d + " :</h2>");
+                out.println("<h3>" + result + "</h3></br>");
+            } catch (NumberFormatException e) {
+                out.println("<h1>Error! Please, enter only numbers</h1>");
+            } catch (IllegalArgumentException e) {
+                out.println("<h1>Error! Follow the domain of the function</h1>");
+            } finally {
+                out.println("<a href=\"formula9page.jsp\"><h2>Back</h2></a>");
+                out.println("</body></html>");
+            }
         }
     }
 }
