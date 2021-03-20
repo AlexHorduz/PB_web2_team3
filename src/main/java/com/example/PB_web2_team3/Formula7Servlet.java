@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.Math.*;
 
-
 @WebServlet(name = "formula7Servlet", value = "/formula7")
 public class Formula7Servlet extends HttpServlet {
     @Override
@@ -27,6 +26,7 @@ public class Formula7Servlet extends HttpServlet {
         String dParam = request.getParameter("d");
 
         try(PrintWriter out = response.getWriter()) {
+            out.println("<html><body>");
             try {
                 double a = Double.parseDouble(aParam);
                 double b = Double.parseDouble(bParam);
@@ -38,15 +38,12 @@ public class Formula7Servlet extends HttpServlet {
                     throw new IllegalArgumentException();
                 }
 
-                out.println("<html><body>");
                 out.println("<img src=\"formula7.png\" alt=\"7th formula image\" border=\"2\" height=\"150\"/>");
                 out.println("<h2>Answer for a = " + a + ", b = " + b + ", c = " + c + ", d = " + d + " :</h2>");
                 out.println("<h3>" + result + "</h3></br>");
             } catch (NumberFormatException e) {
-                out.println("<html><body>");
                 out.println("<h1>Error! Please, enter only numbers</h1>");
             } catch (IllegalArgumentException e) {
-                out.println("<html><body>");
                 out.println("<h1>Error! Follow the domain of the function</h1>");
             } finally {
                 out.println("<a href=\"formula7page.jsp\"><h2>Back</h2></a>");

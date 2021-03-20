@@ -5,15 +5,12 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import static java.lang.Math.*;
-import static java.lang.Math.abs;
 
 @WebServlet(name = "formula9Servlet", value = "/formula9")
 public class Formula9Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 
     private double calculate(double a, double b, double c, double d) {
@@ -41,7 +38,6 @@ public class Formula9Servlet extends HttpServlet {
                     throw new IllegalArgumentException();
                 }
 
-                out.println("<html><body>");
                 out.println("<img src=\"formula9.png\" alt=\"9th formula image\" border=\"2\" height=\"150\"/>");
                 out.println("<h2>Answer for a = " + a + ", b = " + b + ", c = " + c + ", d = " + d + " :</h2>");
                 out.println("<h3>" + result + "</h3></br>");

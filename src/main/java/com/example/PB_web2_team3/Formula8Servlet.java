@@ -11,7 +11,6 @@ import static java.lang.Math.*;
 public class Formula8Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 
     private double calculate(double a, double b, double c, double d) {
@@ -38,7 +37,6 @@ public class Formula8Servlet extends HttpServlet {
                 if (result != result) {    //result = NaN
                     throw new IllegalArgumentException();
                 }
-
 
                 out.println("<img src=\"formula8.png\" alt=\"8th formula image\" border=\"2\" height=\"150\"/>");
                 out.println("<h2>Answer for a = " + a + ", b = " + b + ", c = " + c + ", d = " + d + " :</h2>");
